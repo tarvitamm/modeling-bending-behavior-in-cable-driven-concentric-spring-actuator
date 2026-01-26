@@ -178,9 +178,6 @@ ax2.set_title('Front View', fontsize=16, fontweight='bold', pad=15) # Keep subpl
 
 plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Adjust rect to make space for suptitle
 plt.savefig('figure_views_combined.png', dpi=300, bbox_inches='tight', facecolor='white')
-print("Combined figure saved!")
 
-# Removed individual figure generations to avoid confusion with the combined output
-# Individual figures can be recreated by adapting the code from the combined figure if needed.
 
 plt.show()

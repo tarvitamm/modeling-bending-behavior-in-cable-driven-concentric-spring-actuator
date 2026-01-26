@@ -5,7 +5,7 @@ import math
 import csv
 
 # 🟨 Configuration
-VIDEO_NAME = "1x_otsevaates"  # change this to match your video name
+VIDEO_NAME = "front_view"  # change this to match your video name
 FRAME_FOLDER = Path("selected_frames") / VIDEO_NAME
 OUTPUT_CSV = Path("bending_direction.csv")
 
@@ -77,8 +77,7 @@ for frame_path in frame_paths:
                 print(f"🧮 {frame_path.name}: {angle:.2f}°")
                 results.append([frame_path.name, angle])
                 cv2.imshow("Measure Angle", img)
-
-    # 🖼️ Show the image and wait for 3 clicks
+                cv2.waitKey(0)
     print(f"🖱️ Measuring frame: {frame_path.name}")
     cv2.imshow("Measure Angle", img)
     cv2.setMouseCallback("Measure Angle", click_event)

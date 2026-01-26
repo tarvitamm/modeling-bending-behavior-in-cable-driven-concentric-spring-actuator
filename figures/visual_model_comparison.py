@@ -218,7 +218,7 @@ def r_squared(predicted, measured):
     return 1 - (ss_res / ss_tot)
 
 print("\n" + "="*60)
-print("R² VALUES")
+print("R² VALUES FOR MODEL COMPARISONS")
 print("="*60)
 print(f"Bending Angle (α):")
 print(f"  Geometric model:       R² = {r_squared(geo_a, meas_a):.3f}")
