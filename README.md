@@ -36,60 +36,6 @@ The work presents a hybrid kinematic model that combines constant curvature geom
     └── parameters.md        # Physical parameter documentation
 ```
 
-## Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/continuum-actuator-model.git
-cd continuum-actuator-model
-
-# Create virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-## Quick Start
-
-### Using the Models
-
-```python
-from src.models import (
-    ActuatorParameters,
-    stiffness_scaled_bending_angle,
-    asymmetry_corrected_direction,
-    hybrid_model
-)
-
-# Initialize with default parameters
-params = ActuatorParameters()
-
-# Single tendon actuation example
-l1, l2, l3 = 5.0, 0.0, 0.0  # mm
-
-# Get predictions
-alpha, rho = hybrid_model(l1, l2, l3, params)
-print(f"Bending angle: {alpha:.2f}°")
-print(f"Bending direction: {rho:.2f}°")
-```
-
-### Custom Parameters
-
-```python
-# Create custom actuator parameters
-custom_params = ActuatorParameters(
-    R=3.0,          # Spring radius (mm)
-    L=50.0,         # Active length (mm)
-    E=193e3,        # Young's modulus (N/mm²)
-    d_wire=0.6,     # Wire diameter (mm)
-    d_tendon=0.3,   # Tendon diameter (mm)
-)
-
-# Use custom parameters
-alpha, rho = hybrid_model(l1, l2, l3, custom_params)
-```
 
 ## Physical Parameters
 
@@ -148,14 +94,6 @@ Wᵢ = lᵢ × (1 + (k_c·L/EI) × lᵢ)
 ρ = arctan2(Σ Wᵢ·sin(θᵢ), Σ Wᵢ·cos(θᵢ))
 ```
 
-## Measurement Tools
-
-The repository includes OpenCV-based tools for extracting bending measurements from experimental images:
-
-- **`angle_measurement.py`**: Interactive curve tracing with tangent-based angle computation
-- **`direction_measurement.py`**: Three-point angle measurement for bending direction
-
-> **Note:** Experimental data is proprietary and not included in this repository.
 
 ## Citation
 
