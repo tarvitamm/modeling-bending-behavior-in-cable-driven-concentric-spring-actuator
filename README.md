@@ -1,16 +1,11 @@
-# Hybrid Kinematic Model for Cable-Driven Continuum Spring Actuators
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-
+# Modeling bending behavior in cable-driven concentric spring actuator
 ## Overview
 
 This repository contains the implementation code and analysis tools for the paper:
 
 > **"Modeling Bending Behavior in Cable-Driven Continuum Spring Actuators"**
 > 
-> [Your Name], [Year]
+> Tarvi Tamm, Brayan Fimberg, Ritesh Soni, and Alvo Aabloo, 2026
 
 The work presents a hybrid kinematic model that combines constant curvature geometry with physically-derived stiffness corrections for predicting bending angle and direction in spring-backbone continuum actuators.
 
@@ -176,18 +171,7 @@ If you use this code in your research, please cite:
 }
 ```
 
-For the code repository specifically:
 
-```bibtex
-@software{yourname2025repo,
-  author = {Your Name},
-  title = {Hybrid Kinematic Model for Cable-Driven Continuum Spring Actuators - Code Repository},
-  year = {2025},
-  publisher = {Zenodo},
-  doi = {10.5281/zenodo.XXXXXXX},
-  url = {https://github.com/yourusername/continuum-actuator-model}
-}
-```
 
 ## License
 
@@ -195,6 +179,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-[Your Name] - [your.email@university.edu]
 
-Project Link: [https://github.com/yourusername/continuum-actuator-model](https://github.com/yourusername/continuum-actuator-model)
+Project Link: https://github.com/tarvitamm/modeling-bending-behavior-in-cable-driven-concentric-spring-actuator
