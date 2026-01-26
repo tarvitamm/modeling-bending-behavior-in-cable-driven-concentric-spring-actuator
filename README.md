@@ -1,0 +1,200 @@
+# Hybrid Kinematic Model for Cable-Driven Continuum Spring Actuators
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+
+## Overview
+
+This repository contains the implementation code and analysis tools for the paper:
+
+> **"Modeling Bending Behavior in Cable-Driven Continuum Spring Actuators"**
+> 
+> [Your Name], [Year]
+
+The work presents a hybrid kinematic model that combines constant curvature geometry with physically-derived stiffness corrections for predicting bending angle and direction in spring-backbone continuum actuators.
+
+## Key Results
+
+| Model | Bending Angle RMSE | Bending Direction RMSE |
+|-------|-------------------|----------------------|
+| Geometric (baseline) | 18.41° | 11.10° |
+| **Hybrid (proposed)** | **6.44°** | **7.75°** |
+| Improvement | **65.0%** | **30.2%** |
+
+## Repository Structure
+
+```
+├── README.md                 # This file
+├── LICENSE                   # MIT License
+├── requirements.txt          # Python dependencies
+├── src/
+│   ├── models.py            # Core model implementations
+│   ├── analysis.py          # Error computation and validation
+│   └── measurement/
+│       ├── angle_measurement.py      # Bending angle extraction tool
+│       └── direction_measurement.py  # Bending direction extraction tool
+├── figures/
+│   ├── generate_figures.py  # Publication figure generation
+│   └── output/              # Generated figures (PNG/PDF)
+└── docs/
+    └── parameters.md        # Physical parameter documentation
+```
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/continuum-actuator-model.git
+cd continuum-actuator-model
+
+# Create virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+## Quick Start
+
+### Using the Models
+
+```python
+from src.models import (
+    ActuatorParameters,
+    stiffness_scaled_bending_angle,
+    asymmetry_corrected_direction,
+    hybrid_model
+)
+
+# Initialize with default parameters
+params = ActuatorParameters()
+
+# Single tendon actuation example
+l1, l2, l3 = 5.0, 0.0, 0.0  # mm
+
+# Get predictions
+alpha, rho = hybrid_model(l1, l2, l3, params)
+print(f"Bending angle: {alpha:.2f}°")
+print(f"Bending direction: {rho:.2f}°")
+```
+
+### Custom Parameters
+
+```python
+# Create custom actuator parameters
+custom_params = ActuatorParameters(
+    R=3.0,          # Spring radius (mm)
+    L=50.0,         # Active length (mm)
+    E=193e3,        # Young's modulus (N/mm²)
+    d_wire=0.6,     # Wire diameter (mm)
+    d_tendon=0.3,   # Tendon diameter (mm)
+)
+
+# Use custom parameters
+alpha, rho = hybrid_model(l1, l2, l3, custom_params)
+```
+
+## Physical Parameters
+
+The default parameters correspond to the experimental prototype:
+
+| Parameter | Symbol | Value | Unit |
+|-----------|--------|-------|------|
+| Spring outer radius | R | 2.5 | mm |
+| Active length | L | 40 | mm |
+| Spring Young's modulus | E | 193 | GPa |
+| Wire diameter | d | 0.5 | mm |
+| Tendon diameter | d_t | 0.28 | mm |
+| Tendon Young's modulus | y | 200 | GPa |
+| Tendon free length | L_s | 180 | mm |
+
+### Derived Parameters
+
+| Parameter | Symbol | Value | Unit |
+|-----------|--------|-------|------|
+| Area moment of inertia | I | 0.00307 | mm⁴ |
+| Bending rigidity | EI | 592.12 | N·mm² |
+| Tendon stiffness | k_c | 68.42 | N/mm |
+| Stiffness factor | 1 + EI/(k_c·L) | 1.216 | - |
+| Interaction factor | k_c·L/EI | 4.62 | - |
+
+## Model Equations
+
+### Geometric Model (Baseline)
+
+**Bending angle:**
+```
+α = (1/√6R) × √[(l₁-l₂)² + (l₂-l₃)² + (l₃-l₁)²]
+```
+
+**Bending direction:**
+```
+ρ = arctan2(√3(l₂-l₃), 2l₁-l₂-l₃) + θ₁
+```
+
+### Stiffness-Scaled Model
+
+**Corrected bending angle:**
+```
+α_corrected = α_geometric / (1 + EI/(k_c·L))
+```
+
+### Asymmetry-Corrected Model
+
+**Effective weights:**
+```
+Wᵢ = lᵢ × (1 + (k_c·L/EI) × lᵢ)
+```
+
+**Corrected direction:**
+```
+ρ = arctan2(Σ Wᵢ·sin(θᵢ), Σ Wᵢ·cos(θᵢ))
+```
+
+## Measurement Tools
+
+The repository includes OpenCV-based tools for extracting bending measurements from experimental images:
+
+- **`angle_measurement.py`**: Interactive curve tracing with tangent-based angle computation
+- **`direction_measurement.py`**: Three-point angle measurement for bending direction
+
+> **Note:** Experimental data is proprietary and not included in this repository.
+
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@article{yourname2025continuum,
+  title={Modeling Bending Behavior in Cable-Driven Continuum Spring Actuators},
+  author={Your Name},
+  journal={Journal Name},
+  year={2025},
+  doi={10.xxxx/xxxxx}
+}
+```
+
+For the code repository specifically:
+
+```bibtex
+@software{yourname2025repo,
+  author = {Your Name},
+  title = {Hybrid Kinematic Model for Cable-Driven Continuum Spring Actuators - Code Repository},
+  year = {2025},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.XXXXXXX},
+  url = {https://github.com/yourusername/continuum-actuator-model}
+}
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+[Your Name] - [your.email@university.edu]
+
+Project Link: [https://github.com/yourusername/continuum-actuator-model](https://github.com/yourusername/continuum-actuator-model)
