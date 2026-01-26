@@ -95,27 +95,5 @@ Wᵢ = lᵢ × (1 + (k_c·L/EI) × lᵢ)
 ```
 
 
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{yourname2025continuum,
-  title={Modeling Bending Behavior in Cable-Driven Continuum Spring Actuators},
-  author={Your Name},
-  journal={Journal Name},
-  year={2025},
-  doi={10.xxxx/xxxxx}
-}
-```
-
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact
-
-
 Project Link: https://github.com/tarvitamm/modeling-bending-behavior-in-cable-driven-concentric-spring-actuator
