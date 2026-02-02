@@ -32,7 +32,8 @@ The work presents a hybrid kinematic model that combines constant curvature geom
 │   ├── sideview_frontview.py       # Side and front view visualization
 │   ├── visual_model_comparison.py  # Model comparison visualization
 │   └── output/              # Generated figures (PNG/PDF)
-
+└── docs/
+    └── parameters.md        # Physical parameter documentation
 ```
 
 
