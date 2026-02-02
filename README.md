@@ -25,15 +25,14 @@ The work presents a hybrid kinematic model that combines constant curvature geom
 ├── requirements.txt          # Python dependencies
 ├── src/
 │   ├── models.py            # Core model implementations
-│   ├── analysis.py          # Error computation and validation
 │   └── measurement/
-│       ├── angle_measurement.py      # Bending angle extraction tool
-│       └── direction_measurement.py  # Bending direction extraction tool
+│       ├── bending_angle.py      # Bending angle extraction tool
+│       └── bending_direction.py  # Bending direction extraction tool
 ├── figures/
-│   ├── generate_figures.py  # Publication figure generation
+│   ├── sideview_frontview.py       # Side and front view visualization
+│   ├── visual_model_comparison.py  # Model comparison visualization
 │   └── output/              # Generated figures (PNG/PDF)
-└── docs/
-    └── parameters.md        # Physical parameter documentation
+
 ```
 
 

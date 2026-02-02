@@ -11,7 +11,7 @@ import matplotlib.patches as patches
 from matplotlib.patches import Arc, Circle
 
 # ============================================================================
-# PARAMETERS - ADJUST THESE
+# FIGURE PARAMETERS
 # ============================================================================
 L = 4.0              # Spring length
 alpha_deg = 35       # Bending angle (degrees)
@@ -176,7 +176,7 @@ ax2.set_xlim(-1, 5)
 ax2.set_ylim(-1.5, 4.5)
 ax2.set_title('Front View', fontsize=16, fontweight='bold', pad=15) # Keep subplot title for clarity
 
-plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Adjust rect to make space for suptitle
+plt.tight_layout(rect=[0, 0.03, 1, 0.95])  # Reserve space for main title
 plt.savefig('figure_views_combined.png', dpi=300, bbox_inches='tight', facecolor='white')
 
 

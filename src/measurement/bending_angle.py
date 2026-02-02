@@ -1,13 +1,15 @@
 """
-Bending Angle Analysis Tool
+Bending Angle Measurement Tool
 
+Interactive tool for extracting bending angle measurements from side-view 
+experimental images of continuum actuators through curve tracing and 
+tangent vector analysis.
 
 Methodology:
 1. Interactive curve tracing through mouse input
 2. Arc-length parameterized resampling for uniform point distribution
 3. Tangent vector computation using central difference approximation
 4. Angle measurement relative to horizontal reference axis
-
 """
 
 import cv2
@@ -20,7 +22,7 @@ from pathlib import Path
 # EXPERIMENTAL CONFIGURATION
 # =============================================================================
 
-# Video dataset identifier - modify this to process different experimental conditions
+# Video dataset identifier for experimental data processing
 VIDEO_NAME = "side_view"  
 
 # Directory structure for experimental data
@@ -251,8 +253,8 @@ for frame_index, image_path in enumerate(image_files, 1):
     cv2.setMouseCallback("Draw Curve", mouse_callback)
     cv2.imshow("Draw Curve", img)
     
-    print(f"\n🖼️  Frame {frame_index}/{len(image_files)}: {frame_name}")
-    print("   Protocol: Trace specimen curve, then press 's' to save or 'r' to retry")
+    print(f"\nFrame {frame_index}/{len(image_files)}: {frame_name}")
+    print("   Instructions: Trace specimen curve, then press 's' to save or 'r' to retry")
 
     # Interactive measurement session
     while True:
