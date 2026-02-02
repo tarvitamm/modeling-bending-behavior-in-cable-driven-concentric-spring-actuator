@@ -94,6 +94,3 @@ Wᵢ = lᵢ × (1 + (k_c·L/EI) × lᵢ)
 ρ = arctan2(Σ Wᵢ·sin(θᵢ), Σ Wᵢ·cos(θᵢ))
 ```
 
-
-## Contact
-Project Link: https://github.com/tarvitamm/modeling-bending-behavior-in-cable-driven-concentric-spring-actuator
